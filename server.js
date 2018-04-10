@@ -28,6 +28,25 @@ app.get('/magic/:question', (req, res) => {
 	res.send(req.params.question + "? The Magic 8 Ball says: " + responses[Math.floor(Math.random() * responses.length)]);
 })
 
+
+
+// Fibonacci
+function checkFibonacci (num) {
+    if (Number.isInteger(Math.sqrt((5*(num*num)-4))) || Number.isInteger(Math.sqrt(5*(num*num)+4))) {
+    	return true;
+    } else { 
+    	return false; 
+    }
+}
+
+app.get('/fibonacci/:number', (req, res) => {
+	if (checkFibonacci(req.params.number) === true) {
+		res.send("Sweet number")
+	} else {
+		res.send("This isn't a Fibonacci number.")
+	}
+})
+
 app.listen(2000, () => {
 	"listening 2000..."
 })
