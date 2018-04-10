@@ -11,9 +11,9 @@ app.get('/greeting', (req, res) => {
 });
 
 app.get('/greeting/:name', (req, res) => {
-	res.send(greeting[req.params.name]);
-	console.log("hey");
-	console.log(req.params.index);
+	res.send("Hello there " + req.params.name + "!");
+
+	// console.log(req.params.name);
 });
 
 app.listen(2000, () => {
