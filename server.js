@@ -39,12 +39,28 @@ function checkFibonacci (num) {
     }
 }
 
-app.get('/fibonacci/:number', (req, res) => {
-	if (checkFibonacci(req.params.number) === true) {
-		res.send("Sweet number")
-	} else {
-		res.send("This isn't a Fibonacci number.")
+// app.get('/fibonacci/:number', (req, res) => {
+// 	if (checkFibonacci(req.params.number) === true) {
+// 		res.send("Sweet number")
+// 	} else {
+// 		res.send("This isn't a Fibonacci number.")
+// 	}
+// })
+
+// Fibonacci extended
+function genFibonacciNum (index) {
+	if (index === 0 || index === 1) {
+		return 1;
 	}
+	const arr = [1, 1];
+	for (let i = 2; i <= index; i++) {
+		arr[i] = arr[i - 1] + arr[i - 2];
+	}
+	return arr[index].toString();
+}
+
+app.get('/fibonacci/:index', (req, res) => {
+	res.send(genFibonacciNum(req.params.index));
 })
 
 app.listen(2000, () => {
